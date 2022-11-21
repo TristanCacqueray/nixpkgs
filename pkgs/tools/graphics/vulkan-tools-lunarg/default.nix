@@ -18,6 +18,7 @@
 , symlinkJoin
 , vulkan-validation-layers
 , writeText
+, qt5
 }:
 
 stdenv.mkDerivation rec {
@@ -34,7 +35,7 @@ stdenv.mkDerivation rec {
       fetchSubmodules = true;
     });
 
-  nativeBuildInputs = [ cmake python3 jq ];
+  nativeBuildInputs = [ cmake python3 jq  qt5.wrapQtAppsHook  ];
 
   buildInputs = [
     expat
@@ -46,6 +47,7 @@ stdenv.mkDerivation rec {
     wayland
     xcbutilkeysyms
     xcbutilwm
+    qt5.qtbase
   ];
 
   cmakeFlags = [
